@@ -10,6 +10,6 @@ class DashboardController extends Controller
 {
     public function __invoke()
     {
-        return Inertia::render('User/dashboard');
+        return Inertia::render('user/dashboard/dashboard');
     }
 }

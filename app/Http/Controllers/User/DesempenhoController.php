@@ -10,6 +10,6 @@ class DesempenhoController extends Controller
 {
     public function desempenho()
     {
-        return Inertia::render('user/desempenho/page');
+        return Inertia::render('user/desempenho/list');
     }
 }

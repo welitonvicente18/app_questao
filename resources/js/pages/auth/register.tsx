@@ -1,64 +1,110 @@
-import Link from "next/link";
+import Input from '@/components/Input';
+import { useForm } from '@inertiajs/react';
+import Link from 'next/link';
 
 export default function RegisterPage() {
-  return (
-    <div className="w-screen h-screen bg-zinc-100 flex items-center justify-center">
-      <div className="grid grid-cols-1 md:grid-cols-2 w-full h-full">
-        <div className="hidden md:flex items-center justify-center text-white">
-          <img
-            src="/img/register.png"
-            alt="register"
-            className="w-26 h-26"
-          />
-        </div>
+    const { data, setData, post, processing, errors } = useForm({
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+    });
 
-        <div className="flex items-center justify-center ">
-          <div className="w-[80%] max-w-md min-h-[70vh] bg-white rounded-lg shadow-xl p-5">
-            <h1 className="text-2xl font-bold text-center mt-5">
-              Criar Conta
-            </h1>
-            <div className="my-5 flex flex-col gap-2">
-              <label>Nome</label>
-              <input
-                type="text"
-                placeholder="Seu nome completo"
-                className="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-sky-600"
-              />
-              <label>E-mail</label>
-              <input
-                type="email"
-                placeholder="seu@email.com"
-                className="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-sky-600"
-              />
-              <label>Senha</label>
-              <input
-                type="password"
-                placeholder="Senha"
-                className="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-sky-600"
-              />
-              <label>Confirmar Senha</label>
-              <input
-                type="password"
-                placeholder="Confirmar Senha"
-                className="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-sky-600"
-              />
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        post('/register');
+    }
+
+    return (
+        <div className="flex h-screen w-screen items-center justify-center bg-zinc-100">
+            <div className="grid h-full w-full grid-cols-1 md:grid-cols-2">
+                <div className="hidden items-center justify-center text-white md:flex">
+                    <img
+                        src="/img/register.png"
+                        alt="register"
+                        className="h-96 w-96"
+                    />
+                </div>
+                <div className="flex items-center justify-center">
+                    <div className="min-h-[70vh] w-[80%] max-w-md rounded-lg bg-white p-5 shadow-xl">
+                        <h1 className="mt-5 text-center text-2xl font-bold">
+                            Criar Conta
+                        </h1>
+                        <form onSubmit={handleSubmit}>
+                            <div className="my-5 flex flex-col gap-3">
+                                <Input
+                                    label="Nome"
+                                    type="text"
+                                    value={data.name}
+                                    onChange={(e) =>
+                                        setData('name', e.target.value)
+                                    }
+                                    placeholder="Seu nome completo"
+                                    error={errors.name}
+                                />
+
+                                <Input
+                                    label="E-mail"
+                                    type="email"
+                                    value={data.email}
+                                    onChange={(e) =>
+                                        setData('email', e.target.value)
+                                    }
+                                    placeholder="seu@email.com"
+                                    error={errors.email}
+                                />
+
+                                <Input
+                                    label="Senha"
+                                    type="password"
+                                    value={data.password}
+                                    onChange={(e) =>
+                                        setData('password', e.target.value)
+                                    }
+                                    placeholder="Senha"
+                                    error={errors.password}
+                                />
+
+                                <Input
+                                    label="Confirmar Senha"
+                                    type="password"
+                                    value={data.password_confirmation}
+                                    onChange={(e) =>
+                                        setData(
+                                            'password_confirmation',
+                                            e.target.value
+                                        )
+                                    }
+                                    placeholder="Confirmar Senha"
+                                    error={errors.password_confirmation}
+                                />
+                            </div>
+                            <div className="my-5">
+                                <button
+                                    type="submit"
+                                    disabled={processing}
+                                    className="w-full rounded-md bg-sky-900 py-2 text-white transition duration-300 hover:bg-sky-700 disabled:opacity-50 cursor-pointer"
+                                >
+                                    {processing
+                                        ? 'Cadastrando...'
+                                        : 'Cadastrar Conta'}
+                                </button>
+                            </div>
+                            <div className="my-5 text-center">
+                                <p className="text-sm text-gray-900">
+                                    Já tem uma conta?
+                                    <Link
+                                        href="/login"
+                                        className="cursor-pointer text-sky-900 ml-1 font-semibold"
+                                    >
+                                        Entrar
+                                    </Link>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div className="my-5">
-              <button className="w-full bg-sky-900 text-white py-2 rounded-md transition duration-300 hover:bg-sky-700">
-                Cadastrar Conta
-              </button>
-            </div>
-            <div className="my-5 text-center">
-              <p className="text-sm text-gray-900">
-                Não tem uma conta?
-                <Link href="/login" className="text-sky-900 cursor-pointer">
-                  Entrar
-                </Link>
-              </p>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }

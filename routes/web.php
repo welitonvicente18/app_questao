@@ -5,14 +5,18 @@ use App\Http\Controllers\User\RespondeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\http\Controllers\Admin\DashboardController;
-use App\http\Controllers\user\DashboardController as DashboardUserController;
-use App\http\Controllers\Admin\UserController;
-use App\http\Controllers\Admin\QuestoesController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\User\DashboardController as DashboardUserController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\QuestoesController;
+use App\Http\Controllers\User\PerfilController;
+use App\Http\Controllers\User\DesempenhoController;
 
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::get('/register', RegisterController::class)->name('register');
+Route::post('/login', [LoginController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.store');
 
 // Admin Routes
 Route::prefix('admin')->group(function () {

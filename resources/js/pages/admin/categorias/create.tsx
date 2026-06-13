@@ -1,5 +1,3 @@
-"use client";
-
 import { FaPlus } from "react-icons/fa6";
 import PageHeader from "@/components/layouts/PageHeader";
 import CategoryForm, { CategoryFormData } from "@/components/forms/CategoryForm";
@@ -13,7 +11,7 @@ export default function CreateCategoryPage() {
   return (
     <>
       <PageHeader icon={FaPlus} title="Adicionar Categoria" />
-      <div className="p-5 flex flex-col gap-6 w-full">
+      <div className="p-10 flex flex-col gap-6 w-full">
         <CategoryForm
           onSubmit={handleCreate}
           buttonLabel="Salvar Categoria"

@@ -11,7 +11,7 @@ export default function Layout({ children, SidebarComponent }: LayoutProps) {
       <SidebarComponent />
       <div className="flex-1 h-full">
         <NavBar />
-        <main className="">
+        <main className="p-2">
           {children}
         </main>
       </div>

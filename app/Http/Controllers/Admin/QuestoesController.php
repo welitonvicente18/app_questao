@@ -10,16 +10,16 @@ class QuestoesController extends Controller
 {
     public function index()
     {
-        return Inertia::render('admin/questoes/page');
+        return Inertia::render('admin/questoes/list');
     }
 
     public function create()
     {
-        return Inertia::render('admin/questoes/create/page');
+        return Inertia::render('admin/questoes/create');
     }
 
     public function edit(int $id)
     {
-        return Inertia::render('admin/questoes/edit/[id]/page', ['id' => $id]);
+        return Inertia::render('admin/questoes/edit', ['id' => $id]);
     }
 }

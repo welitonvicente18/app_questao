@@ -10,6 +10,6 @@ class PerfilController extends Controller
 {
     public function perfil()
     {
-        return Inertia::render('user/perfil/page');
+        return Inertia::render('user/perfil/perfil');
     }
 }

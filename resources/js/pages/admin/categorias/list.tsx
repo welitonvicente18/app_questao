@@ -1,14 +1,10 @@
-"use client";
-
 import PageHeader from "@/components/layouts/PageHeader";
+import Link from "next/link";
 import { TbEdit } from "react-icons/tb";
 import { BiCategory } from "react-icons/bi";
 import { TbTrash } from "react-icons/tb";
-import Link from "next/link";
-import {
-  IoIosArrowDroprightCircle,
-  IoIosArrowRoundForward,
-} from "react-icons/io";
+import {IoIosArrowDroprightCircle, IoIosArrowRoundForward} from "react-icons/io";
+
 import {
   TableHeader,
   TableBody,
@@ -50,7 +46,7 @@ export default function CategoryPage() {
         createRoute="/admin/categorias/create"
         createLabel="Nova Categoria"
       />
-      <div className="p-5 flex flex-col gap-6 w-full">
+      <div className="p-10 flex flex-col gap-6 w-full">
         <section className="flex flex-row w-full">
           <Table>
             <TableHeader>

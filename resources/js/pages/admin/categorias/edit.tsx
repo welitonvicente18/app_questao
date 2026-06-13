@@ -1,12 +1,10 @@
-"use client";
-
-import { use } from "react";
+import { usePage } from '@inertiajs/react';
 import { FaEdit } from "react-icons/fa";
 import PageHeader from "@/components/layouts/PageHeader";
 import CategoryForm, { CategoryFormData } from "@/components/forms/CategoryForm";
 
 export default function EditCategoryPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+   const { id } = usePage().props;
 
   // Simulação de dados carregados da API
   const initialData: CategoryFormData = {
@@ -21,11 +19,11 @@ export default function EditCategoryPage({ params }: { params: Promise<{ id: str
 
   return (
     <>
-      <PageHeader 
-        icon={FaEdit} 
-        title={`Editar Categoria ${id}`} 
+      <PageHeader
+        icon={FaEdit}
+        title={`Editar Categoria ${id}`}
       />
-      <div className="p-5 flex flex-col gap-6 w-full">
+      <div className="p-10 flex flex-col gap-6 w-full">
         <CategoryForm
           initialData={initialData}
           onSubmit={handleEdit}

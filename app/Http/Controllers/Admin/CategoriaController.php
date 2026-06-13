@@ -15,11 +15,11 @@ class CategoriaController extends Controller
 
     public function create()
     {
-        return Inertia::render('admin/categorias/create/page');
+        return Inertia::render('admin/categorias/create');
     }
 
     public function edit(int $id)
     {
-        return Inertia::render('admin/categorias/edit/[id]/page', ['id' => $id]);
+        return Inertia::render('admin/categorias/edit', ['id' => $id]);
     }
 }
