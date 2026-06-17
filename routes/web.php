@@ -20,7 +20,7 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.store');
 
 // Admin Routes
-Route::prefix('admin')->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('admin.dashboard');
     // User
     Route::get('/usuarios', [UserController::class, 'index'])->name('admin.users');
