@@ -1,8 +1,9 @@
 import Input from '@/components/Input';
-import { useForm } from '@inertiajs/react';
-import Link from 'next/link';
+import { useForm, usePage, Link } from '@inertiajs/react';
 
 export default function RegisterPage() {
+    const page = usePage();
+
     const { data, setData, post, processing, errors } = useForm({
         name: '',
         email: '',

@@ -33,10 +33,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/categorias/edit/{id}', [CategoriaController::class, 'edit'])->name('admin.categories.edit');
 });
 
-// User Routes
-Route::prefix('arena')->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('arena')->group(function () {
     Route::get('/dashboard', DashboardUserController::class)->name('dashboard');
     Route::get('/perfil', [PerfilController::class, 'perfil'])->name('profile');
+    Route::post('/perfil', [PerfilController::class, 'update'])->name('profile.update');
     Route::get('/desempenho', [DesempenhoController::class, 'desempenho'])->name('performance');
     // Responder
     Route::get('/responder/escolha-categoria', [RespondeController::class, 'escolhaCategoria'])->name('user.responder.escolhacategoria');

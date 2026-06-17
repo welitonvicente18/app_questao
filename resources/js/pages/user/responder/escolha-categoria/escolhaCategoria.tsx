@@ -1,8 +1,5 @@
-"use client";
-
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { Link, router } from "@inertiajs/react";
 import { TbEdit, TbTrash } from "react-icons/tb";
 import PageHeader from "@/components/layouts/PageHeader";
 import {
@@ -15,7 +12,6 @@ import {
 import { GiBookmark } from "react-icons/gi";
 
 export default function QuestionPage() {
-  const router = useRouter();
   const questions = [
     {
       id: 1,

@@ -32,10 +32,14 @@ export default defineConfig({
             formVariants: true,
         }),
     ],
+    server: {
+        host: '0.0.0.0',
+        hmr: {
+            host: 'localhost',
+        },
+    },
     resolve: {
         alias: {
-            'next/link': path.resolve(__dirname, 'resources/js/next-compat.tsx'),
-            'next/navigation': path.resolve(__dirname, 'resources/js/next-compat.tsx'),
             '@': path.resolve(__dirname, 'resources/js'),
         },
     },

@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { router } from "@inertiajs/react";
 
 export default function Home() {
-  redirect("/login");
+  router.visit("/login");
 }

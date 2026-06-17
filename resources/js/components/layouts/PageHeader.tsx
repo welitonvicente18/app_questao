@@ -1,4 +1,3 @@
-import { useRouter } from "next/navigation";
 import type { IconType } from "react-icons";
 import Button from "@/components/Button";
 import { HiArrowNarrowLeft } from "react-icons/hi";
@@ -11,8 +10,6 @@ type HeadPageProps = {
 };
 
 export default function PageHeader({ icon: Icon, ...props }: HeadPageProps) {
-  const router = useRouter();
-
   return (
     <section className="p-2 py-3 flex flex-col gap-1 w-full border-b border-slate-300">
       <div className="flex flex-row justify-between items-center w-full p-2 text-black">

@@ -1,4 +1,3 @@
-"use client";
 
 import { ChangeEvent, useState, FormEvent } from "react";
 import Input from "@/components/Input";

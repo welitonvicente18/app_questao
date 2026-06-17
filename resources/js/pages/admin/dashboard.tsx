@@ -1,4 +1,3 @@
-"use client";
 
 import PageHeader from "@/components/layouts/PageHeader";
 import { IoStatsChart } from "react-icons/io5";

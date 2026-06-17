@@ -1,9 +1,6 @@
-"use client";
-
 import { ChangeEvent, useState, FormEvent } from "react";
 import { GiBookmark } from "react-icons/gi";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { Link, router } from "@inertiajs/react";
 import { TbEdit, TbTrash } from "react-icons/tb";
 import PageHeader from "@/components/layouts/PageHeader";
 import {
@@ -16,7 +13,6 @@ import {
 import Input from "@/components/Input";
 
 export default function QuestionPage() {
-  const router = useRouter();
   const [formSearch, setFormSearch] = useState({ name: "" });
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {

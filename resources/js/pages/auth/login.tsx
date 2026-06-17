@@ -1,8 +1,10 @@
 import Input from '@/components/Input';
-import { useForm } from '@inertiajs/react';
-import Link from 'next/link';
+import { useForm, usePage, Link } from '@inertiajs/react';
 
 export default function LoginPage() {
+    const page = usePage();
+    console.log('Page Props:', page.props);
+
     const { data, setData, post, processing, errors } = useForm({
         email: '',
         password: '',

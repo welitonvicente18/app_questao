@@ -3,7 +3,7 @@ import { FaEdit } from "react-icons/fa";
 import PageHeader from "@/components/layouts/PageHeader";
 import CategoryForm, { CategoryFormData } from "@/components/forms/CategoryForm";
 
-export default function EditCategoryPage({ params }: { params: Promise<{ id: string }> }) {
+export default function EditCategoryPage() {
    const { id } = usePage().props;
 
   // Simulação de dados carregados da API

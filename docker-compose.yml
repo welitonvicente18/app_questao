@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:80"
+      - "5173:5173"
+    volumes:
+      - .:/var/www/html
+    environment:
+      WEB_DOCUMENT_ROOT: /var/www/html/public

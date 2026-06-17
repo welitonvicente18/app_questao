@@ -1,10 +1,9 @@
-"use client";
 
 import { IoPeople } from "react-icons/io5";
 import { TbEdit, TbTrash } from "react-icons/tb";
 import PageHeader from "@/components/layouts/PageHeader";
 import { Table, TableHeader, TableBody, TableTh, TableTd } from "@/components/table";
-import Link from "next/link";
+import { Link } from "@inertiajs/react";
 
 export default function UsersPage() {
   const users = [

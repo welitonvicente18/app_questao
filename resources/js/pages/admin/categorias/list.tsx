@@ -1,5 +1,5 @@
 import PageHeader from "@/components/layouts/PageHeader";
-import Link from "next/link";
+import { Link } from "@inertiajs/react";
 import { TbEdit } from "react-icons/tb";
 import { BiCategory } from "react-icons/bi";
 import { TbTrash } from "react-icons/tb";

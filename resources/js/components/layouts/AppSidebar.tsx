@@ -12,14 +12,14 @@ export default function AppSidebar() {
       <nav className="text-white w-full flex-1 mt-4">
         <div className="flex flex-col justify-center gap-5">
           <ul className="p-4 w-full flex flex-col gap-2">
-            <SlideBarLi icon={IoHome} label="Meu Dashboard" href="/dashboard" />
+            <SlideBarLi icon={IoHome} label="Meu Dashboard" href="/arena/dashboard" />
             <SlideBarLi
               icon={GiBookmark}
               label="Praticar Questões"
-              href="/responder/escolha-categoria"
+              href="/arena/responder/escolha-categoria"
             />
-            <SlideBarLi icon={BsGraphUp} label="Meu Desempenho" href="/desempenho" />
-            <SlideBarLi icon={IoPerson} label="Meu Perfil" href="/perfil" />
+            <SlideBarLi icon={BsGraphUp} label="Meu Desempenho" href="/arena/desempenho" />
+            <SlideBarLi icon={IoPerson} label="Meu Perfil" href="/arena/perfil" />
           </ul>
         </div>
       </nav>

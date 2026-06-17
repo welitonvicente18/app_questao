@@ -1,5 +1,3 @@
-"use client";
-
 import { BsGraphUp } from "react-icons/bs";
 import PageHeader from "@/components/layouts/PageHeader";
 import Card from "@/components/Card";

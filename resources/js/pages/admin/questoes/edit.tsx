@@ -1,12 +1,10 @@
-"use client";
-
-import { use } from "react";
 import { FaEdit } from "react-icons/fa";
 import PageHeader from "@/components/layouts/PageHeader";
 import QuestionForm, { QuestionFormData } from "@/components/forms/QuestionForm";
+import { usePage } from "@inertiajs/react";
 
-export default function EditQuestionPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+export default function EditQuestionPage() {
+  const { id } = usePage().props;
 
   // Simulação de dados carregados da API refletindo a nova interface
   const initialData: QuestionFormData = {

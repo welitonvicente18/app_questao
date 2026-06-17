@@ -1,6 +1,5 @@
-"use client";
 
-import { FaPlus } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa";
 import PageHeader from "@/components/layouts/PageHeader";
 import QuestionForm, { QuestionFormData } from "@/components/forms/QuestionForm";
 

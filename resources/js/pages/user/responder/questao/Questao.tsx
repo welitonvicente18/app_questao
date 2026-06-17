@@ -1,4 +1,3 @@
-"use client";
 
 import { useState } from "react";
 import { GiBookmark } from "react-icons/gi";

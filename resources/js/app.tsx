@@ -27,42 +27,23 @@ createInertiaApp({
                 const AdminLayout = (
                     await (import('./pages/admin/layout') as any)
                 ).default;
-                page.layout = (children: any) => (
-                    <AdminLayout>{children}</AdminLayout>
-                );
+                page.layout = AdminLayout;
             } else if (name.startsWith('user/')) {
                 const UserLayout = (await (import('./pages/user/layout') as any))
                     .default;
-                page.layout = (children: any) => (
-                    <UserLayout>{children}</UserLayout>
-                );
+                page.layout = UserLayout;
             }
         }
 
         return module;
     },
     setup({ el, App, props }) {
-        // Bridge Next.js expected props (params, searchParams) in a stable way
-        const bridgedProps = {
-            ...props,
-            initialPage: {
-                ...props.initialPage,
-                props: {
-                    ...props.initialPage.props,
-                    params: Promise.resolve(props.initialPage.props),
-                    searchParams: Promise.resolve(
-                        props.initialPage.props.query || {}
-                    ),
-                },
-            },
-        };
-
         if (import.meta.env.SSR) {
-            hydrateRoot(el, <App {...bridgedProps} />);
+            hydrateRoot(el, <App {...props} />);
             return;
         }
 
-        createRoot(el).render(<App {...bridgedProps} />);
+        createRoot(el).render(<App {...props} />);
     },
     progress: {
         color: '#4B5563',

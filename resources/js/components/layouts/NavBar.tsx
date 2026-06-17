@@ -1,6 +1,10 @@
+import { usePage } from "@inertiajs/react";
 import { BsBell } from "react-icons/bs";
 
 export default function NavBar() {
+
+    const { auth } = usePage().props as any;
+
   return (
     <section className="w-full h-[60px]">
       <nav className="w-full h-full text-black border-b border-slate-300 shadow-sm">
@@ -12,7 +16,7 @@ export default function NavBar() {
             <div className="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center font-semibold text-slate-600">
               W
             </div>
-            <span className="font-medium items-center"> Weliton</span>
+            <span className="font-medium items-center"> {auth.user.name}</span>
           </div>
         </div>
       </nav>

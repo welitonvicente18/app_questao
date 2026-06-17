@@ -1,5 +1,5 @@
 import type { IconType } from "react-icons";
-import Link from "next/link";
+import { Link } from "@inertiajs/react";
 
 interface SlideBarLiProps {
   icon: IconType;
