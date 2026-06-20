@@ -3,14 +3,7 @@ import PageHeader from '@/components/layouts/PageHeader';
 import Input from '@/components/Input';
 import { useState } from 'react';
 import { useForm, usePage } from '@inertiajs/react';
-import Swal from '@/components/lib/swal';
-
-// Swal.fire({
-//     title: 'Sucesso!',
-//     text: 'Registro salvo com sucesso.',
-//     icon: 'success',
-// });
-
+import { ToastContainer, toast } from 'react-toastify';
 import { useEffect } from 'react';
 
 type PageProps = {
@@ -37,11 +30,15 @@ export default function ProfilePage() {
 
     useEffect(() => {
         if (flash.success) {
-            Swal.fire({
-                title: 'Sucesso!',
-                text: flash.success,
-                icon: 'success',
-                timer: 3000,
+            toast.success(flash.success, {
+                position: 'top-right',
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'light',
             });
         }
     }, [flash.success]);
@@ -53,6 +50,7 @@ export default function ProfilePage() {
 
     return (
         <>
+            <ToastContainer />
             <PageHeader icon={IoPerson} title="Meu Perfil" />
             <section className="flex w-full flex-col gap-6 p-5">
                 <div className="flex flex-col gap-8 rounded-lg border border-slate-200 bg-white p-8 shadow-sm md:flex-row">
@@ -85,7 +83,11 @@ export default function ProfilePage() {
                                         setData('name', e.target.value)
                                     }
                                 />
-                                {errors.name && <span className="text-red-500 text-xs">{errors.name}</span>}
+                                {errors.name && (
+                                    <span className="text-xs text-red-500">
+                                        {errors.name}
+                                    </span>
+                                )}
                             </div>
                             <div className="flex flex-col gap-2">
                                 <Input
@@ -99,7 +101,11 @@ export default function ProfilePage() {
                                         setData('email', e.target.value)
                                     }
                                 />
-                                {errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
+                                {errors.email && (
+                                    <span className="text-xs text-red-500">
+                                        {errors.email}
+                                    </span>
+                                )}
                             </div>
                         </div>
                         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -108,8 +114,7 @@ export default function ProfilePage() {
                                     Tipo de Usuário
                                 </label>
                                 <select
-                                    className={`w-full rounded-md border border-gray-300 px-4 py-2 transition duration-200 focus:border-slate-500 focus:ring-2 focus:ring-slate-400 focus:outline-none
-                                        ${user.is_admin === 0 ? 'bg-slate-200' : ''}`}
+                                    className={`w-full rounded-md border border-gray-300 px-4 py-2 transition duration-200 focus:border-slate-500 focus:ring-2 focus:ring-slate-400 focus:outline-none ${user.is_admin === 0 ? 'bg-slate-200' : ''}`}
                                     disabled={true}
                                     defaultValue={
                                         user.is_admin === 1 ? '1' : '0'
@@ -136,16 +141,22 @@ export default function ProfilePage() {
                                         setData('password', e.target.value)
                                     }
                                 />
-                                {errors.password && <span className="text-red-500 text-xs">{errors.password}</span>}
+                                {errors.password && (
+                                    <span className="text-xs text-red-500">
+                                        {errors.password}
+                                    </span>
+                                )}
                             </div>
                         </div>
                         <div className="mt-4 flex justify-end">
                             <button
                                 type="submit"
                                 disabled={processing}
-                                className="cursor-pointer rounded-md bg-brand-dark px-6 py-2 font-semibold transition-colors hover:bg-slate-800 text-brand-gold disabled:opacity-50"
+                                className="cursor-pointer rounded-md bg-brand-gold px-8 py-2 font-semibold text-white transition-colors hover:bg-yellow-600 disabled:opacity-50"
                             >
-                                {processing ? 'Salvando...' : 'Salvar Alterações'}
+                                {processing
+                                    ? 'Salvando...'
+                                    : 'Salvar Alterações'}
                             </button>
                         </div>
                     </form>
