@@ -1,32 +1,25 @@
-import { usePage } from '@inertiajs/react';
 import { FaEdit } from "react-icons/fa";
 import PageHeader from "@/components/layouts/PageHeader";
-import CategoryForm, { CategoryFormData } from "@/components/forms/CategoryForm";
+import CategoryForm from "@/components/forms/CategoryForm";
 
-export default function EditCategoryPage() {
-   const { id } = usePage().props;
+interface Props {
+    category: {
+        id: number;
+        name: string;
+        description: string;
+    };
+}
 
-  // Simulação de dados carregados da API
-  const initialData: CategoryFormData = {
-    name: "Categoria Exemplo " + id,
-    description: "Descrição carregada da categoria",
-  };
-
-  const handleEdit = (data: CategoryFormData) => {
-    // Aqui virá a chamada para sua API de atualização (PUT/PATCH)
-    console.log(`Editando categoria ${id}:`, data);
-  };
-
+export default function EditCategoryPage({ category }: Props) {
   return (
     <>
       <PageHeader
         icon={FaEdit}
-        title={`Editar Categoria ${id}`}
+        title={`Editar Categoria: ${category.name}`}
       />
       <div className="p-10 flex flex-col gap-6 w-full">
         <CategoryForm
-          initialData={initialData}
-          onSubmit={handleEdit}
+          category={category}
           buttonLabel="Salvar Alterações"
         />
       </div>
